@@ -68,7 +68,7 @@ const MyDiaryPage = () => {
   return (
     <div className="my-diary-page">
       <h3 className="diary-title-text">일기</h3>
-      <div>
+      <div className="my-diary-page-input">
         <DateWeatherInput
           userInput={userInput}
           setUserInput={setUserInput}
