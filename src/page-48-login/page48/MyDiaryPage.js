@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import DateWeatherInput from './DateWeatherInput';
+
 import './MyDiaryPage.css';
+import DiaryInput from './DiaryInput';
+import WeatherSelector from '../WeatherSelector';
+import MyDaySection from './MyDaySection';
 
 //1. 날짜 입력 및 날씨 선택 >> 현 날짜 및 날씨 정보와 동일한지 확인
 //2. 불일치 >> 오류 메시지 + 입력 필드 리셋 + 현 날짜 및 날씨 정보 렌더링
@@ -18,64 +21,74 @@ import './MyDiaryPage.css';
 //>> 여러 문장 객체에 담아두고, 새로고침 할 때마다 랜덤 출력되도록
 //>> 소제목: '대뇌 활동을 열심히 합시다' + 이에 해당하는 문구
 const MyDiaryPage = () => {
-  const getCurrentDateInfo = () => {
-    const date = new Date();
-    const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
-
-    return {
-      year: date.getFullYear().toString(),
-      month: (date.getMonth() + 1).toString().padStart(2, '0'),
-      day: date.getDate().toString().padStart(2, '0'),
-      weekday: weekdays[date.getDay()],
-      weather: 'Sunny',
-    };
-  };
-
-  const [userInput, setUserInput] = useState({
+  const [dateInput, setDateInput] = useState({
     year: '',
     month: '',
     day: '',
     weekday: '',
-    weather: '',
   });
+  const [selectedWeather, setSelectedWeather] = useState('');
+  const [correctDate, setCorrectDate] = useState(new Date());
 
-  const [correctAnswer] = useState(getCurrentDateInfo());
-  const [message, setMessage] = useState('');
+  const resetInputs = () => {
+    const correctDateString = {
+      year: correctDate.getFullYear(),
+      month: correctDate.getMonth() + 1,
+      day: correctDate.getDate(),
+      weekday: ['일', '월', '화', '수', '목', '금', '토'][correctDate.getDay()],
+    };
 
-  const validateInput = (input) => {
-    const isCorrect =
-      input.year === correctAnswer.year &&
-      input.month === correctAnswer.month &&
-      input.day === correctAnswer.day &&
-      input.weekday === correctAnswer.weekday &&
-      input.weather === correctAnswer.weather;
-
-    if (isCorrect) {
-      setMessage('정답입니다!');
-    } else {
-      setMessage('오답입니다!');
-      setUserInput(correctAnswer);
-    }
+    setDateInput(correctDateString);
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    const updatedInput = { ...userInput, [name]: value };
-    setUserInput(updatedInput);
-    validateInput(updatedInput);
+  const handleSubmit = () => {
+    const currentDate = new Date();
+    const isCorrect =
+      parseInt(dateInput.year, 10) === currentDate.getFullYear() &&
+      parseInt(dateInput.month, 10) === currentDate.getMonth() + 1 &&
+      parseInt(dateInput.day, 10) === currentDate.getDate() &&
+      dateInput.weekday ===
+        ['일', '월', '화', '수', '목', '금', '토'][currentDate.getDay()];
+
+    console.log('user input:', {
+      year: dateInput.year,
+      month: dateInput.month,
+      day: dateInput.day,
+      weekday: dateInput.weekday,
+      weather: selectedWeather,
+    });
+
+    console.log('correct answer:', {
+      year: currentDate.getFullYear(),
+      month: currentDate.getMonth() + 1,
+      day: currentDate.getDate(),
+      weekday: ['일', '월', '화', '수', '목', '금', '토'][currentDate.getDay()],
+    });
+
+    if (!isCorrect) {
+      alert('오답입니다!');
+      resetInputs();
+    } else {
+      alert('정답입니다!');
+    }
   };
 
   return (
     <div className="my-diary-page">
-      <h3 className="diary-title-text">일기</h3>
-      <div className="my-diary-page-input">
-        <DateWeatherInput
-          userInput={userInput}
-          setUserInput={setUserInput}
-          handleChange={handleChange}
-        />
-        {message && <p>{message}</p>}
+      <div className="diary-header">
+        <h3>일기</h3>
+        <div className="diary-user-input-section">
+          <DiaryInput dateInput={dateInput} setDateInput={setDateInput} />
+          <WeatherSelector
+            selectedWeather={selectedWeather}
+            setSelectedWeather={setSelectedWeather}
+          />
+          <button onClick={handleSubmit} className="diary-weather-submit-btn">
+            등록
+          </button>
+        </div>
       </div>
+      <MyDaySection />
     </div>
   );
 };
