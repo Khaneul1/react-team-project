@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './MyDaySection.css';
+import TimeEntry from './TimeEntry';
 
 const MyDaySection = () => {
   const [dayInputs, setDayInputs] = useState({
@@ -8,6 +9,12 @@ const MyDaySection = () => {
     purchasedItems: '',
     expenses: '',
     todayNews: '',
+    tasks: {
+      '오전 5시~8시': '',
+      '오전 8시~12시': '',
+      '오후 12시~5시': '',
+      '오후 5시~10시': '',
+    },
   });
 
   const handleInputChange = (field, value) => {
@@ -17,8 +24,14 @@ const MyDaySection = () => {
     }));
   };
 
-  const handleSubmit = () => {
-    console.log('나의 하루 입력:', dayInputs);
+  const handleTaskChange = (time, value) => {
+    setDayInputs((prev) => ({
+      ...prev,
+      tasks: {
+        ...prev.tasks,
+        [time]: value,
+      },
+    }));
   };
 
   return (
@@ -67,6 +80,21 @@ const MyDaySection = () => {
             onChange={(e) => handleInputChange('todayNews', e.target.value)}
             className="todayNews-input-box"
           />
+        </div>
+
+        <div className="tasks-section">
+          <div className="row">
+            <span className="time-header">시각</span>
+            <span className="task-header">중요한 일</span>
+          </div>
+          {Object.entries(dayInputs.tasks).map(([time, task], index) => (
+            <TimeEntry
+              key={index}
+              time={time}
+              task={task}
+              onChange={handleTaskChange}
+            />
+          ))}
         </div>
       </div>
     </div>

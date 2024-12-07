@@ -35,6 +35,10 @@
   border-right: 1px solid #a7dab8;
 }
 
+.time-header {
+  background-color: #a7dab8;
+}
+
 .my-day-input-box {
   padding: 0.5rem;
   border: none;
@@ -60,4 +64,8 @@
 .diary-met-people,
 .diary-expenses {
   border-left: 1px solid #a7dab8;
+}
+
+.tasks-section {
+  margin-top: 1rem;
 }
