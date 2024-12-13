@@ -1,11 +1,11 @@
-.login-page {
+.signup-page {
   margin-top: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-container {
+.signup-container {
   border: 2px solid #a7dab8;
   width: 30%;
   height: 30rem;
@@ -16,12 +16,12 @@
   padding: 1rem;
 }
 
-.login-container h2 {
+.signup-container h2 {
   border-bottom: 2px solid #a7dab8;
   padding: 1rem;
 }
 
-.login-section {
+.signup-section {
   border-radius: 0.5rem;
   width: 90%;
   height: 25rem;
@@ -33,13 +33,13 @@
   text-align: center;
 }
 
-.login-section input {
+.signup-section input {
   padding: 0.7rem;
   border-radius: 0.5rem;
   border: 2px solid #a7dab8;
 }
 
-.login-section button {
+.signup-section button {
   margin-top: 1rem;
   width: 4.5rem;
   background: none;
@@ -49,12 +49,12 @@
   margin-bottom: -1rem;
 }
 
-.login-section button:hover {
+.signup-section button:hover {
   background-color: #a7dab8;
   color: white;
 }
 
-.login-section button:active {
+.signup-section button:active {
   background-color: #a7dab8;
   color: white;
 }
