@@ -29,3 +29,31 @@
   border: none;
   background: none;
 }
+
+.tomorrow-plan {
+  display: flex;
+  margin-top: 2rem;
+  border-bottom: 1px solid #a7dab8;
+  border-top: 1px solid #a7dab8;
+  padding: 1rem;
+  width: 549%;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.tomorrow-plan-title {
+  width: 14.8%;
+  margin-left: 1rem;
+  border-right: 1px solid #a7dab8;
+}
+
+.tomorrow-plan-input {
+  width: 70%;
+}
+
+.tomorrow-plan-input textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  resize: none;
+}

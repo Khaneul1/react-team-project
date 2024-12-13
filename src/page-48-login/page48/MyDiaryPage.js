@@ -2,18 +2,9 @@ import React, { useState } from 'react';
 
 import './MyDiaryPage.css';
 import DiaryInput from './DiaryInput';
-import WeatherSelector from '../WeatherSelector';
+import WeatherSelector from './WeatherSelector';
 import MyDaySection from './MyDaySection';
-
-//1. 날짜 입력 및 날씨 선택 >> 현 날짜 및 날씨 정보와 동일한지 확인
-//2. 불일치 >> 오류 메시지 + 입력 필드 리셋 + 현 날짜 및 날씨 정보 렌더링
-//3. 일치할 경우 정답 메시지 + 현 날짜 및 날씨 정보 렌더링
-
-//4. title: 나의 하루 / subTitle: 방문한 장소, 오늘 만난 사람, 구입한 물건, 지출 금액, 오늘의 뉴스
-//5. table처럼 만들기!! 각 subTitle 고정, 입력값은 text로
-
-//6. title: 중요한 일 / subTitle: 시각(세부적으로 구분된 시간 기재) + 해당 시간대에 뭐 했는지
-//7. 입력값 text, 이 또한 table 형식으로 제작
+import TimeTable from './TimeTable';
 
 //8. title: 내일 계획 + 입력 필드
 
@@ -41,6 +32,27 @@ const MyDiaryPage = () => {
     setDateInput(correctDateString);
   };
 
+  const [tasks, setTasks] = useState({
+    '오전 5시~8시': '',
+    '오전 8시~12시': '',
+    '오후 12시~5시': '',
+    '오후 5시~10시': '',
+  });
+
+  const handleInputChange = (field, value) => {
+    setDateInput((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const handleTaskChange = (timeSlot, value) => {
+    setTasks((prev) => ({
+      ...prev,
+      [timeSlot]: value,
+    }));
+  };
+
   const handleSubmit = () => {
     const currentDate = new Date();
     const isCorrect =
@@ -49,21 +61,6 @@ const MyDiaryPage = () => {
       parseInt(dateInput.day, 10) === currentDate.getDate() &&
       dateInput.weekday ===
         ['일', '월', '화', '수', '목', '금', '토'][currentDate.getDay()];
-
-    console.log('user input:', {
-      year: dateInput.year,
-      month: dateInput.month,
-      day: dateInput.day,
-      weekday: dateInput.weekday,
-      weather: selectedWeather,
-    });
-
-    console.log('correct answer:', {
-      year: currentDate.getFullYear(),
-      month: currentDate.getMonth() + 1,
-      day: currentDate.getDate(),
-      weekday: ['일', '월', '화', '수', '목', '금', '토'][currentDate.getDay()],
-    });
 
     if (!isCorrect) {
       alert('오답입니다!');
@@ -88,7 +85,19 @@ const MyDiaryPage = () => {
           </button>
         </div>
       </div>
-      <MyDaySection />
+      <MyDaySection
+        dayInputs={dateInput}
+        handleInputChange={handleInputChange}
+      />
+      <TimeTable tasks={tasks} handleTaskChange={handleTaskChange} />
+      <div className="tomorrow-plan">
+        <div className="tomorrow-plan-title">
+          <p>내일 계획</p>
+        </div>
+        <div className="tomorrow-plan-input">
+          <textarea type="text" />
+        </div>
+      </div>
     </div>
   );
 };
