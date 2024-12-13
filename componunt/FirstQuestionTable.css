@@ -1,0 +1,27 @@
+th, td {
+    border: 1px solid silver;
+}
+th {
+    width: 100px;
+    height: 16px;
+}
+td {
+    width: 130px;
+    justify-content: center;
+    align-items: center;
+}
+tr {
+    width: 100px;
+}
+
+.hoverEffect:hover {
+    display: block; 
+    background-color: #f0f0f0; 
+    border: 1px solid black; 
+    padding: 10px;
+    margin: 5px 0; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+    border-radius: 5px; 
+    overflow:'visible' 
+  }
+  
