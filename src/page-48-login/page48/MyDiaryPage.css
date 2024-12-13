@@ -30,30 +30,23 @@
   background: none;
 }
 
-.tomorrow-plan {
-  display: flex;
+.tomorrow-plan-table {
+  width: 51%;
+  border-collapse: collapse;
   margin-top: 2rem;
-  border-bottom: 1px solid #a7dab8;
-  border-top: 1px solid #a7dab8;
-  padding: 1rem;
-  width: 549%;
-  align-items: flex-start;
-  margin-bottom: 1rem;
 }
 
-.tomorrow-plan-title {
-  width: 14.8%;
-  margin-left: 1rem;
+.plan-title {
   border-right: 1px solid #a7dab8;
+  width: 12.7%;
+  text-align: start;
+  padding-left: 2.2rem;
 }
 
-.tomorrow-plan-input {
-  width: 70%;
-}
-
-.tomorrow-plan-input textarea {
+.plan-input {
+  padding: 0.8rem;
   width: 100%;
-  padding: 0.5rem;
   border: none;
   resize: none;
+  box-sizing: border-box;
 }

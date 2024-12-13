@@ -19,7 +19,7 @@ const TimeTable = ({ tasks, handleTaskChange }) => {
           </tr>
         </thead>
       </table>
-      <tbody>
+      <tbody className="time-table-section">
         {timeSlots.map(({ time, description }) => (
           <tr key={time} className="time-table-box">
             <td className="time-table-time">{time}</td>

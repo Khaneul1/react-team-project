@@ -5,8 +5,7 @@ import DiaryInput from './DiaryInput';
 import WeatherSelector from './WeatherSelector';
 import MyDaySection from './MyDaySection';
 import TimeTable from './TimeTable';
-
-//8. title: 내일 계획 + 입력 필드
+import BrainHealthTips from './BrainHealthTips';
 
 //9. 뇌 건강을 위한 생활 습관 랜덤 메시지 출력
 //>> 여러 문장 객체에 담아두고, 새로고침 할 때마다 랜덤 출력되도록
@@ -90,14 +89,17 @@ const MyDiaryPage = () => {
         handleInputChange={handleInputChange}
       />
       <TimeTable tasks={tasks} handleTaskChange={handleTaskChange} />
-      <div className="tomorrow-plan">
-        <div className="tomorrow-plan-title">
-          <p>내일 계획</p>
-        </div>
-        <div className="tomorrow-plan-input">
-          <textarea type="text" />
-        </div>
-      </div>
+      <table className="tomorrow-plan-table">
+        <tbody>
+          <tr className="tomorrow-plan-table-section">
+            <td className="plan-title">내일 계획</td>
+            <td>
+              <textarea type="text" className="plan-input" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <BrainHealthTips />
     </div>
   );
 };

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './MyDaySection.css';
-// import TimeEntry from './TimeEntry';
 
 const MyDaySection = ({ dayInputs, handleInputChange }) => {
   return (

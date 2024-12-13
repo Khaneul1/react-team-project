@@ -9,6 +9,7 @@ table {
   text-align: center;
   margin-top: -1.2rem;
   table-layout: fixed;
+  border-top: 2px solid #a7dab8;
 }
 
 tr {
@@ -37,6 +38,8 @@ th {
 
 .time-table-des-box {
   border-right: 1px solid #a7dab8;
+  color: #7a7a7a;
+  font-weight: bold;
 }
 
 .th-importantThing {
@@ -44,8 +47,9 @@ th {
 }
 
 .th-time {
-  width: 15%;
+  width: 15.1%;
   background-color: #edf9f1;
+  border-right: 1px solid #a7dab8;
 }
 
 .time-table-input {
@@ -59,14 +63,11 @@ th {
 }
 
 .time-table-time {
-  width: 28.7%;
+  width: 28.9%;
+  border-right: 1px solid #a7dab8;
 }
 
 .time-table-input-box {
   border-bottom: 1px solid #a7dab8;
   width: 255%;
-}
-
-.tomorrow-plan-section {
-  margin-top: 2rem;
 }
