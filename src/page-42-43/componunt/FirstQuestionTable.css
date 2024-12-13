@@ -1,0 +1,27 @@
+th, td {
+    border: 1px solid silver;
+}
+th {
+    width: 100px;
+    height: 16px;
+}
+td {
+    width: 130px;
+    justify-content: center;
+    align-items: center;
+}
+tr {
+    width: 100px;
+}
+
+.hoverEffect:hover {
+    display: block; /* 블록 요소로 변경 */
+    background-color: #f0f0f0; /* 배경색 */
+    border: 1px solid black; /* 테두리 */
+    padding: 10px; /* 내부 여백 */
+    margin: 5px 0; /* 상하 간격 */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 약간의 그림자 추가 */
+    border-radius: 5px; /* 모서리 둥글게 */
+    overflow:'visible' 
+  }
+  
